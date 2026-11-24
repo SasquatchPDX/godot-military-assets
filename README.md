@@ -8,8 +8,9 @@ A catalogue of military and transport game art for Godot projects, with publishe
 - [Godot import checklist](#4-import-and-asset-library-checklist)
 - [Additional collections and historical sources](#expansion-2--additional-model-collections-and-source-geometry)
 - [Newer listings by asset type](#expansion-3--additional-game-assets-by-type)
+- [tevy publisher index with version-pinned GLB downloads](PUBLISHER-INDEX.md)
 
-To suggest an asset, [open an issue](../../issues/new) with the publisher URL, file formats, license or usage terms, and the category it belongs in.
+To suggest an asset, [open an issue](https://github.com/SasquatchPDX/godot-military-assets/issues/new) with the publisher URL, file formats, license or usage terms, and the category it belongs in.
 
 ## 1. High-priority model collections
 
