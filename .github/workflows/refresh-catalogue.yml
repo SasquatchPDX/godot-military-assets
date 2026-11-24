@@ -1,0 +1,31 @@
+name: Refresh asset catalogue
+on:
+  schedule:
+    - cron: '23 8 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: asset-catalogue-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Refresh the publisher index
+        run: python3 scripts/refresh_catalogue.py
+      - name: Publish changed listings
+        run: |
+          git add PUBLISHER-INDEX.md
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Refresh publisher asset index'
+          git push
+      - name: Check curated links
+        run: python3 scripts/refresh_catalogue.py --check-links
